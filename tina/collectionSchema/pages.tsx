@@ -11,6 +11,6 @@ export const PagesSchema: Collection = {
       name: "title",
       label: "Title",
     },
-    // Add more fields here as needed
+    // THis is where my templates will go
   ],
 };
