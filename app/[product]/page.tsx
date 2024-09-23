@@ -27,7 +27,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
   );
 }
 
-//test comment
+//test comment2
+
 
 async function getPage(product: string) {
   try {
