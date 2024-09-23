@@ -27,6 +27,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
   );
 }
 
+//test comment
+
 async function getPage(product: string) {
   try {
     const pageContent = await client.queries.pages({
