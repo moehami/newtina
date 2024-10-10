@@ -8,6 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        inter: ['Inter', 'sans-serif'],
         helvetica: ['Helvetica', 'Arial', 'sans-serif'],
       },
       screens: {

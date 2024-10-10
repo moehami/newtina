@@ -17,7 +17,7 @@ interface Plan {
   price: string;
   subPriceText: string;
   actions: PlanAction;
-  isReccomended: boolean;
+  isRecommended: boolean;
 }
 
 interface AllPlan {
@@ -58,7 +58,7 @@ const Pricing = ({ data }: PricingProps) => {
         </div>
       )}
 
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-5 px-28">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-5 px-28 lg:px-12">
         {allPlans && allPlans.length > 0 && (
           <div
             className="all-plans p-4 rounded-lg text-white col-span-1 lg:col-span-2 lg:mx-auto xl:col-span-1"
@@ -85,7 +85,7 @@ const Pricing = ({ data }: PricingProps) => {
             <div
               key={index}
               className={`plan-card text-white border border-opacity-10  border-white px-6 py-10 rounded-3xl shadow-xl bg-opacity-20 hover:bg-opacity-30 transition-opacity duration-200 bg-stone-600 ${
-                plan.isReccomended
+                plan.isRecommended
                   ? "border-3 border-white border-opacity-100"
                   : ""
               }`}
@@ -94,7 +94,7 @@ const Pricing = ({ data }: PricingProps) => {
               {plan.planTier && (
                 <div className="mb-2 flex items-center justify-between">
                   <h3 className="text-3xl">{plan.planTier}</h3>
-                  {plan.isReccomended && (
+                  {plan.isRecommended && (
                     <p className="text-sm bg-gray-300 bg-opacity-40 rounded-full px-2 py-1">
                       Most Popular
                     </p>
