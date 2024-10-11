@@ -36,7 +36,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
   );
 }
 
-async function getBlogsForProduct(product: string) {
+export async function getBlogsForProduct(product: string, offset = 0, limit = 5) {
   try {
     const res = await client.queries.getAllBlogs();
 
@@ -50,7 +50,6 @@ async function getBlogsForProduct(product: string) {
       throw new Error("No documents found");
     }
 
-    // Filter the blogs for the specific product
     const filteredBlogs = res.data.blogsConnection.edges?.filter((edge: any) =>
       edge.node?._sys?.path?.includes(`/blogs/${product}/`)
     );
@@ -59,20 +58,21 @@ async function getBlogsForProduct(product: string) {
       throw new Error("No documents found");
     }
 
-    
     const sortedBlogs = filteredBlogs.sort((a: any, b: any) => {
       const dateA = new Date(a.node.date);
       const dateB = new Date(b.node.date);
       return dateB.getTime() - dateA.getTime(); //sort in descending order (latest first)
     });
+    
+    const paginatedBlogs = sortedBlogs.slice(offset, offset + limit);
 
     return {
       query: res.query,
-      data: sortedBlogs.map((edge: any) => edge.node),
+      data: paginatedBlogs.map((edge: any) => edge.node),
+      hasMore: sortedBlogs.length > offset + limit,
     };
   } catch (error) {
     console.error("Error fetching TinaCMS blog data:", error);
     notFound();
   }
 }
-
