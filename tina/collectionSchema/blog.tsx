@@ -35,6 +35,16 @@ export const blogCollection: Collection = {
       label: "Author",
     },
     {
+      type: 'string',
+      name: 'sswPeopleLink',
+      label: 'Author SSW People Link'
+    },
+    {
+      type: 'string',
+      name: 'readLength',
+      label: 'Read (time) length'
+    },
+    {
       type: "rich-text",
       name: "body",
       label: "Body",
