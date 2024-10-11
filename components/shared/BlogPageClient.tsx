@@ -64,7 +64,6 @@ interface BlogPageClientProps {
 }
 
 export default function BlogPageClient({
-  query,
   data,
   product,
 }: BlogPageClientProps) {
