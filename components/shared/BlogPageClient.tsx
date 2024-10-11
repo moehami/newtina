@@ -2,11 +2,11 @@
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
-import Link from "next/link";
-import { getBlogsForProduct } from '../../app/[product]/blog/page';
-import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import { extractBlurbAsTinaMarkdownContent } from "../../utils/extractBlurbAsTinaMarkdownContent";
+import Link from 'next/link';
+import { getBlogsForProduct } from '../../utils/fetchBlogs'; // Updated import
+import { TinaMarkdown, TinaMarkdownContent } from 'tinacms/dist/rich-text';
+import { HiOutlineArrowNarrowRight } from 'react-icons/hi';
+import { extractBlurbAsTinaMarkdownContent } from '../../utils/extractBlurbAsTinaMarkdownContent';
 
 const BlogCard = ({
   title,
@@ -32,15 +32,15 @@ const BlogCard = ({
       <h2 className="text-2xl font-bold mb-2 tracking-wider">{title}</h2>
       <div className="font-light text-sm">
         <span>
-          by{" "}
+          by{' '}
           <Link target="_blank" href={sswPeopleLink} className="underline">
-            {author}{" "}
+            {author}{' '}
           </Link>
         </span>
         <div>
           <span>{`${new Date(date).getDate()} ${new Date(date).toLocaleString(
-            "default",
-            { month: "long" }
+            'default',
+            { month: 'long' }
           )} ${new Date(date).getFullYear()}`}</span>
           <span>{` | ${readLength}`}</span>
         </div>
@@ -74,7 +74,7 @@ export default function BlogPageClient({
 
   const loadMoreBlogs = useCallback(async () => {
     if (loading || !hasMore) return;
-    console.log("Loading more blogs...");
+    console.log('Loading more blogs...');
     setLoading(true);
 
     const moreBlogs = await getBlogsForProduct(product, offset, 5);
