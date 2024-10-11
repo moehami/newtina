@@ -19,14 +19,19 @@ export default async function BlogPage({ params }: BlogPageProps) {
   }
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <InteractiveBackground />
       <NavBarServer product={product} />
-      <BlogPageClient query={blogs.query} data={blogs.data} product={product} />
+      
+      <div className="flex-grow">
+        <BlogPageClient query={blogs.query} data={blogs.data} product={product} />
+      </div>
+      
       <FooterServer product={product} />
     </div>
   );
 }
+
 
 async function getBlogsForProduct(product: string) {
   try {
