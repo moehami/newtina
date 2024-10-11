@@ -2,6 +2,7 @@ import { defineConfig } from "tinacms";
 import { PagesSchema } from "./collectionSchema/pages";
 import { navigationBarCollection } from "./collectionSchema/navbar";
 import { footerCollection } from "./collectionSchema/footer";
+import { blogCollection } from "./collectionSchema/blog";
 
 const branch =
   process.env.GITHUB_BRANCH ||
@@ -31,6 +32,7 @@ export default defineConfig({
       PagesSchema, 
       navigationBarCollection,
       footerCollection,
+      blogCollection,
     ],
   },
 });

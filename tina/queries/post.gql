@@ -1,0 +1,14 @@
+query getAllBlogs {
+  blogsConnection {
+    totalCount
+    edges {
+      node {
+        _sys {
+          filename
+          path
+        }
+        ...BlogsParts
+      }
+    }
+  }
+}
