@@ -59,12 +59,20 @@ async function getBlogsForProduct(product: string) {
       throw new Error("No documents found");
     }
 
+    
+    const sortedBlogs = filteredBlogs.sort((a: any, b: any) => {
+      const dateA = new Date(a.node.date);
+      const dateB = new Date(b.node.date);
+      return dateB.getTime() - dateA.getTime(); //sort in descending order (latest first)
+    });
+
     return {
       query: res.query,
-      data: filteredBlogs.map((edge: any) => edge.node),
+      data: sortedBlogs.map((edge: any) => edge.node),
     };
   } catch (error) {
     console.error("Error fetching TinaCMS blog data:", error);
     notFound();
   }
 }
+
