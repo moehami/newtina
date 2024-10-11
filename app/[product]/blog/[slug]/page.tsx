@@ -15,30 +15,30 @@ interface BlogPostProps {
 export default async function BlogPost({ params }: BlogPostProps) {
   const { slug, product } = params;
 
-  const data = await getBlogPost(product, slug);  
+  const data = await getBlogPost(product, slug);
   if (!data) {
     return notFound();
   }
 
-  console.log('data here', data)
+  console.log("data here", data);
 
   return (
     <div className="flex flex-col min-h-screen">
       <InteractiveBackground />
       <NavBarServer product={product} />
-      
+
       <div className="flex-grow">
-        <BlogPostClient 
-          title={data.title} 
-          author={data.author} 
-          date={data.date} 
-          body={data.body} 
-          sswPeopleLink={data.sswPeopleLink}
-          readLength={data.readLength}
-          filename={data._sys.filename}
+        <BlogPostClient
+          title={data.title}
+          author={data.author || ""}
+          date={data.date || ""}
+          body={data.body}
+          sswPeopleLink={data.sswPeopleLink || ""}
+          readLength={data.readLength || ""}
+          filename={data._sys.filename || ""}
         />
       </div>
-      
+
       <FooterServer product={product} />
     </div>
   );
@@ -47,13 +47,13 @@ export default async function BlogPost({ params }: BlogPostProps) {
 async function getBlogPost(product: string, slug: string) {
   try {
     const res = await client.queries.blogs({
-      relativePath: `${product}/${slug}.mdx`
+      relativePath: `${product}/${slug}.mdx`,
     });
 
     const blog = res.data?.blogs;
 
     if (!blog) {
-      return null; 
+      return null;
     }
 
     return blog;
