@@ -15,14 +15,14 @@ interface BlogPostClientProps {
   filename: string;
 }
 
-const BreadCrumbs = ({ filename }: { filename: string }) => {
+const BreadCrumbs = ({ title }: { title: string }) => {
     return (
       <div className="font-light mb-4 inline-flex items-center">
         <Link href="/blog">BLOG</Link> 
         <span className="mx-2">
           <MdOutlineKeyboardArrowRight size={20} />
         </span>
-        <span>{filename.toUpperCase()}</span>
+        <span>{title.toUpperCase()}</span>
       </div>
     );
   };
@@ -38,7 +38,7 @@ export default function BlogPostClient({
   return (
     <>
       <div className="p-4 max-w-3xl mx-auto text-white">
-        <BreadCrumbs filename={filename} />
+        <BreadCrumbs title={title} />
         <h2 className="text-3xl font-bold mb-2 tracking-wide">{title}</h2>
 
         <div className="text-sm mb-4">
