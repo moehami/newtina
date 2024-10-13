@@ -33,7 +33,7 @@ export default function BlogPostClient({
   body,
   sswPeopleLink,
   readLength,
-  filename,
+  
 }: BlogPostClientProps) {
   return (
     <>
