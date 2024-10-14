@@ -69,7 +69,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
     if (["gif", "jpg", "jpeg", "png"].includes(fileExtension || "")) {
       return (
         <div
-          className={`media-container flex justify-center items-center px-4 md:px-20 lg:px-80 transition-opacity duration-1000 ease-in-out ${
+          className={`media-container flex justify-center items-center px-4 md:px-20 3xl:px-80 transition-opacity duration-1000 ease-in-out ${
             imageLoaded ? "opacity-100" : "opacity-0"
           }`}
           data-tina-field={tinaField(item, "image")}
