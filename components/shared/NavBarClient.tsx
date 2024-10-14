@@ -38,7 +38,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
       case "NavigationBarLeftNavItemStringItem":
       case "NavigationBarRightNavItemStringItem":
         return (
-          <li key={index} className="flex items-center pt-2 lg:px-10 xl:px-0 md:px-6 px-4">
+          <li key={index} className="flex items-center lg:px-3 xl:px-0 md:px-3 px-2">
             <Link
               href={item.href}
               className="hover:underline md:text-xl"
@@ -103,12 +103,12 @@ export default function NavBarClient({ results }: NavBarClientProps) {
           scrolled
             ? 'bg-stone-700 bg-opacity-90 backdrop-blur-md'
             : 'bg-transparent'
-        } text-gray-300 fixed top-0 left-0 w-full z-50 transition-colors duration-300 flex justify-between items-center h-[120px]`}
+        } text-gray-300 fixed top-0 left-0 w-full z-50 transition-colors duration-300 flex justify-between items-center h-[70px]`}
       >
-        <ul className="md:pl-20 pl-10 flex items-center justify-start h-full space-x-15 xl:space-x-20">
+        <ul className="md:pl-20 pl-10 flex items-center justify-start h-full space-x-15 xl:space-x-10">
           {logo && (
             <li className="flex items-center">
-              <Link href="/">
+              <Link href="/" className="pb-1 lg:px-3 xl:px-0 md:px-3 px-2">
                 <Image src={logo} alt="Logo" width={200} height={200} />
               </Link>
             </li>
@@ -120,8 +120,6 @@ export default function NavBarClient({ results }: NavBarClientProps) {
           {rightNavItems?.map((item, index) => renderNavItem(item, index))}
         </ul>
       </nav>
-  
-      <div className="h-[120px]"></div>
     </div>
   );
   
