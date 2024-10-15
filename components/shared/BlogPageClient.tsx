@@ -74,11 +74,11 @@ export default function BlogPageClient({
 
   const loadMoreBlogs = useCallback(async () => {
     if (loading || !hasMore) return;
-    console.log('Loading more blogs...');
+    
     setLoading(true);
 
     const moreBlogs = await getBlogsForProduct(product, offset, 5);
-    console.log('Fetched more blogs:', moreBlogs);
+    
 
     if (moreBlogs) {
       setBlogs((prevBlogs: any) => {
@@ -105,7 +105,7 @@ export default function BlogPageClient({
     const target = document.querySelector('#load-more-trigger');
     if (target) {
       observer.observe(target);
-      console.log('Observer attached to load-more-trigger');
+      
     }
 
     return () => {
