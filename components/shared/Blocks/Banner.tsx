@@ -21,7 +21,6 @@ interface BannerProps {
 }
 
 const Banner = ({ data }: { data: BannerProps["data"] }) => {
-  console.log(data);
   const gradientBackground = `linear-gradient(135deg, ${data.backgroundColour}33, ${data.backgroundColour})`;
 
   return (
@@ -32,13 +31,13 @@ const Banner = ({ data }: { data: BannerProps["data"] }) => {
       }}
     >
       <div
-        className="container mx-auto px-4 flex flex-row items-center text-left"
+        className="container mx-auto px-4 flex flex-col md:flex-col lg:flex-row items-center text-left"
         style={{ color: data.textColour }}
       >
         {/* Left Column: Text and Buttons */}
-        <div className="w-2/5 flex  flex-col gap-2 pl-20">
+        <div className="lg:w-2/5 w-full flex flex-col gap-2 pl-0 lg:pl-20">
           <h1
-            className="text-3xl  mb-4"
+            className="text-3xl mb-4"
             data-tina-field={tinaField(data, "headline")}
           >
             {data.headline}
@@ -58,7 +57,7 @@ const Banner = ({ data }: { data: BannerProps["data"] }) => {
         {/* Right Column: Image */}
         {data.image && (
           <div
-            className="w-3/5 flex items-center justify-center h-full"
+            className="lg:w-3/5 w-full flex items-center justify-center h-full"
             data-tina-field={tinaField(data, "image")}
           >
             <Image
