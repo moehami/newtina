@@ -34,28 +34,23 @@ export default function FooterClient({ results }: FooterClientProps) {
   }, []);
 
   if (!results?.footer) {
-    return <p> Tina connection broken</p>;
+    return <p>Tina connection broken</p>;
   }
 
   const footerItems = results?.footer?.footer;
   const footerTitle = results?.footer?.footerTitle;
-  //We are asserting that the footerColor exists with '!' as we are accounting for the null case in the className
-  //and the non-null null case in the style 
   const footerColor = results.footer.footerColor!;
 
   return (
     <footer
       className={`text-white py-6 transition-opacity duration-300 ${
-        !footerColor ? "bg-ssw-charcoal" : ''
+        !footerColor ? "bg-ssw-charcoal" : ""
       } ${isVisible ? "opacity-100" : "opacity-0"}`}
       style={{ backgroundColor: footerColor }}
     >
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="pl-6 md:pl-0 text-left md:text-sm text-xs lg:text-base">
-          {footerTitle || "Default Footer Title"}
-        </div>
-
-        <div className="flex space-x-4 md:pr-0 pr-6">
+      <div className="container mx-auto flex flex-col md:flex-col-reverse lg:flex-row justify-center items-center">
+        {/* Footer Items */}
+        <div className="flex space-x-4 md:pr-0 lg:pr-6 mb-4 md:mb-0 justify-center">
           {footerItems?.map((item, index) => {
             if (item) {
               return (
@@ -72,6 +67,11 @@ export default function FooterClient({ results }: FooterClientProps) {
             }
             return null;
           })}
+        </div>
+
+        {/* Footer Title */}
+        <div className="text-center md:text-sm text-xs lg:text-base">
+          {footerTitle || "Default Footer Title"}
         </div>
       </div>
     </footer>
