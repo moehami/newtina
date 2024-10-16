@@ -42,7 +42,8 @@ export const blogCollection: Collection = {
     {
       type: 'string',
       name: 'readLength',
-      label: 'Read (time) length'
+      label: 'Read (time) length',
+      description: 'Want to get an accurate read length? Use a read-o-meter! https://niram.org/read/'
     },
     {
       type: "rich-text",
