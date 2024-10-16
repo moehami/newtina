@@ -134,7 +134,6 @@ export default function BlogIndexClient({
         ))}
       </div>
       {hasMore && <div id="load-more-trigger" className="h-20"></div>}
-      {loading && <p>Loading more blogs...</p>}
     </div>
   );
 }
