@@ -17,7 +17,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
+      if (window.scrollY > 50) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -99,7 +99,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
         className={`${
           scrolled
             ? "bg-stone-700 bg-opacity-90 backdrop-blur-md"
-            : "bg-transparent"
+            : "bg-transparent mt-6"
         } text-gray-300 fixed top-0 left-0 w-full z-50 transition-colors duration-300 flex justify-between items-center h-[70px]`}
       >
         <div className="flex items-center md:justify-between lg:justify-normal  w-full px-4 md:px-20">
