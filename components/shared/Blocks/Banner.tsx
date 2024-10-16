@@ -31,7 +31,7 @@ const Banner = ({ data }: { data: BannerProps["data"] }) => {
       }}
     >
       <div
-        className="container mx-auto px-4 flex flex-col md:flex-col lg:flex-row items-center text-left"
+        className="container mx-auto px-8 flex flex-col md:flex-col lg:flex-row items-center text-left"
         style={{ color: data.textColour }}
       >
         {/* Left Column: Text and Buttons */}

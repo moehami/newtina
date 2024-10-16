@@ -176,7 +176,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
               )}
               {item.description && (
                 <p
-                  className="text-base  mt-4"
+                  className="text-base  mt-4 px-8"
                   data-tina-field={tinaField(item, "description")}
                 >
                   {item.description}
