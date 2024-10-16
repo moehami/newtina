@@ -42,9 +42,9 @@ export default function NavBarClient({ results }: NavBarClientProps) {
         return (
           <li
             key={index}
-            className="flex items-center lg:px-3 xl:px-0 md:px-3 px-2"
+            className="flex items-center lg:px-3 xl:px-0 py-1 px-2"
           >
-            <Link href={item.href} className="hover:underline md:text-xl">
+            <Link href={item.href} className="hover:underline text-xl">
               {item.label}
             </Link>
           </li>
@@ -84,7 +84,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
         );
       case "NavigationBarRightNavItemBookingButton":
         return (
-          <li key={index} className="flex items-center">
+          <li key={index} className="flex items-center py-2">
             <BookingButton title={item.Title} jotFormId={item.JotFormId} />
           </li>
         );
@@ -131,7 +131,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
           } overflow-hidden transition-all duration-500 ease-in-out lg:hidden w-full bg-stone-700 bg-opacity-90 backdrop-blur-md text-white absolute top-full left-0 flex flex-col items-start space-y-2`}
         >
           <div className="p-5">
-            <ul className="flex flex-col py-3">
+            <ul className="flex flex-col">
               {leftNavItems?.map((item, index) => renderNavItem(item, index))}
             </ul>
             <ul className="flex flex-col space-y-3">
