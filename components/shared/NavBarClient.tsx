@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { NavigationBarQuery } from '../../tina/__generated__/types';
-import Image from 'next/image';
-import { BookingButton } from './Blocks/BookingButton';
-import Link from 'next/link';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { useEffect, useState } from "react";
+import { NavigationBarQuery } from "../../tina/__generated__/types";
+import Image from "next/image";
+import { BookingButton } from "./Blocks/BookingButton";
+import Link from "next/link";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 interface NavBarClientProps {
   results: NavigationBarQuery | null;
@@ -24,9 +24,9 @@ export default function NavBarClient({ results }: NavBarClientProps) {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -37,17 +37,20 @@ export default function NavBarClient({ results }: NavBarClientProps) {
 
   const renderNavItem = (item: any, index: number) => {
     switch (item?.__typename) {
-      case 'NavigationBarLeftNavItemStringItem':
-      case 'NavigationBarRightNavItemStringItem':
+      case "NavigationBarLeftNavItemStringItem":
+      case "NavigationBarRightNavItemStringItem":
         return (
-          <li key={index} className="flex items-center lg:px-3 xl:px-0 md:px-3 px-2">
+          <li
+            key={index}
+            className="flex items-center lg:px-3 xl:px-0 md:px-3 px-2"
+          >
             <Link href={item.href} className="hover:underline md:text-xl">
               {item.label}
             </Link>
           </li>
         );
-      case 'NavigationBarLeftNavItemGroupOfStringItems':
-      case 'NavigationBarRightNavItemGroupOfStringItems':
+      case "NavigationBarLeftNavItemGroupOfStringItems":
+      case "NavigationBarRightNavItemGroupOfStringItems":
         return (
           <li key={index} className="flex items-center group relative">
             <span className="cursor-pointer">{item.label}</span>
@@ -62,24 +65,24 @@ export default function NavBarClient({ results }: NavBarClientProps) {
             </ul>
           </li>
         );
-      case 'NavigationBarLeftNavItemModalButton':
-      case 'NavigationBarRightNavItemModalButton':
+      case "NavigationBarLeftNavItemModalButton":
+      case "NavigationBarRightNavItemModalButton":
         return (
           <li key={index} className="flex items-center">
             <button
               className={`px-4 py-2 rounded ${
-                item.variant === 'primary'
-                  ? 'bg-blue-500 text-white'
-                  : item.variant === 'secondary'
-                  ? 'bg-gray-500 text-white'
-                  : 'bg-white text-black'
+                item.variant === "primary"
+                  ? "bg-blue-500 text-white"
+                  : item.variant === "secondary"
+                  ? "bg-gray-500 text-white"
+                  : "bg-white text-black"
               }`}
             >
               {item.label}
             </button>
           </li>
         );
-      case 'NavigationBarRightNavItemBookingButton':
+      case "NavigationBarRightNavItemBookingButton":
         return (
           <li key={index} className="flex items-center">
             <BookingButton title={item.Title} jotFormId={item.JotFormId} />
@@ -95,11 +98,11 @@ export default function NavBarClient({ results }: NavBarClientProps) {
       <nav
         className={`${
           scrolled
-            ? 'bg-stone-700 bg-opacity-90 backdrop-blur-md'
-            : 'bg-transparent'
+            ? "bg-stone-700 bg-opacity-90 backdrop-blur-md"
+            : "bg-transparent"
         } text-gray-300 fixed top-0 left-0 w-full z-50 transition-colors duration-300 flex justify-between items-center h-[70px]`}
       >
-        <div className="flex items-center justify-between w-full px-4 md:px-20">
+        <div className="flex items-center md:justify-between lg:justify-normal  w-full px-4 md:px-20">
           {logo && (
             <Link href="/" className="pb-1 lg:px-3 xl:px-0 md:px-3 px-2">
               <Image src={logo} alt="Logo" width={200} height={200} />
@@ -107,28 +110,28 @@ export default function NavBarClient({ results }: NavBarClientProps) {
           )}
 
           <button
-            className="md:block lg:hidden block text-3xl"
+            className="md:block lg:hidden ml-auto block text-3xl"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <FaTimes /> : <FaBars />}
           </button>
 
-          <ul className="hidden lg:flex items-center space-x-15 xl:space-x-10">
+          <ul className="hidden lg:flex items-center lg:px-10 space-x-15 xl:space-x-10">
             {leftNavItems?.map((item, index) => renderNavItem(item, index))}
           </ul>
 
-          <ul className="hidden lg:flex items-center space-x-15 xl:space-x-20">
+          <ul className="hidden lg:flex items-center lg:ml-auto space-x-15 xl:space-x-20">
             {rightNavItems?.map((item, index) => renderNavItem(item, index))}
           </ul>
         </div>
 
         <div
           className={`${
-            isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-          } overflow-hidden transition-all duration-500 ease-in-out lg:hidden w-full bg-stone-700 bg-opacity-90 backdrop-blur-md text-white absolute top-full left-0 flex flex-col items-center space-y-2`}
+            isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+          } overflow-hidden transition-all duration-500 ease-in-out lg:hidden w-full bg-stone-700 bg-opacity-90 backdrop-blur-md text-white absolute top-full left-0 flex flex-col items-start space-y-2`}
         >
           <div className="p-5">
-            <ul className="flex flex-col space-y-3">
+            <ul className="flex flex-col py-3">
               {leftNavItems?.map((item, index) => renderNavItem(item, index))}
             </ul>
             <ul className="flex flex-col space-y-3">
