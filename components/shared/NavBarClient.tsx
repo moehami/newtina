@@ -5,7 +5,8 @@ import { NavigationBarQuery } from "../../tina/__generated__/types";
 import Image from "next/image";
 import { BookingButton } from "./Blocks/BookingButton";
 import Link from "next/link";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { HiOutlineBars3 } from "react-icons/hi2";
+import { CgClose } from "react-icons/cg";
 
 interface NavBarClientProps {
   results: NavigationBarQuery | null;
@@ -113,7 +114,7 @@ export default function NavBarClient({ results }: NavBarClientProps) {
             className="md:block lg:hidden ml-auto block text-3xl"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <FaTimes /> : <FaBars />}
+            {isOpen ? <CgClose /> : <HiOutlineBars3 />}
           </button>
 
           <ul className="hidden lg:flex items-center lg:px-10 space-x-15 xl:space-x-10">
