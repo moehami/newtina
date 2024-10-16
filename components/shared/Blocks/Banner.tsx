@@ -42,7 +42,7 @@ const Banner = ({ data }: { data: BannerProps["data"] }) => {
           >
             {data.headline}
           </h1>
-          <p className="text-lg items-center flex justify-center text-center mb-6" data-tina-field={tinaField(data, "text")}>
+          <p className="text-lg mb-6" data-tina-field={tinaField(data, "text")}>
             {data.text}
           </p>
 
