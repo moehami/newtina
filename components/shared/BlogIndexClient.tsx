@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useState, useEffect, useCallback } from 'react';
-import Link from 'next/link';
-import { getBlogsForProduct } from '../../utils/fetchBlogs'; // Updated import
-import { TinaMarkdown, TinaMarkdownContent } from 'tinacms/dist/rich-text';
-import { HiOutlineArrowNarrowRight } from 'react-icons/hi';
-import { extractBlurbAsTinaMarkdownContent } from '../../utils/extractBlurbAsTinaMarkdownContent';
+import { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
+import { getBlogsForProduct } from "../../utils/fetchBlogs"; // Updated import
+import { TinaMarkdown, TinaMarkdownContent } from "tinacms/dist/rich-text";
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import { extractBlurbAsTinaMarkdownContent } from "../../utils/extractBlurbAsTinaMarkdownContent";
 
 const BlogCard = ({
   title,
@@ -32,15 +32,15 @@ const BlogCard = ({
       <h2 className="text-2xl font-bold mb-2 tracking-wider">{title}</h2>
       <div className="font-light text-sm">
         <span>
-          by{' '}
+          by{" "}
           <Link target="_blank" href={sswPeopleLink} className="underline">
-            {author}{' '}
+            {author}{" "}
           </Link>
         </span>
         <div>
           <span>{`${new Date(date).getDate()} ${new Date(date).toLocaleString(
-            'default',
-            { month: 'long' }
+            "default",
+            { month: "long" }
           )} ${new Date(date).getFullYear()}`}</span>
           <span>{` | ${readLength}`}</span>
         </div>
@@ -48,7 +48,10 @@ const BlogCard = ({
           <TinaMarkdown content={blurb} />
         </div>
 
-        <Link href={`/blog/${blogPostLink}`} className="mt-4 flex items-center font-light">
+        <Link
+          href={`/blog/${blogPostLink}`}
+          className="mt-4 flex items-center font-light"
+        >
           <span>READ MORE</span>
           <HiOutlineArrowNarrowRight className="ml-2 transform scale-x-150 scale-y-125" />
         </Link>
@@ -57,16 +60,16 @@ const BlogCard = ({
   );
 };
 
-interface BlogPageClientProps {
+interface BlogIndexClientProps {
   query: any;
   data: any;
   product: string;
 }
 
-export default function BlogPageClient({
+export default function BlogIndexClient({
   data,
   product,
-}: BlogPageClientProps) {
+}: BlogIndexClientProps) {
   const [blogs, setBlogs] = useState(data);
   const [loading, setLoading] = useState(false);
   const [offset, setOffset] = useState(5);
@@ -74,11 +77,10 @@ export default function BlogPageClient({
 
   const loadMoreBlogs = useCallback(async () => {
     if (loading || !hasMore) return;
-    
+
     setLoading(true);
 
     const moreBlogs = await getBlogsForProduct(product, offset, 5);
-    
 
     if (moreBlogs) {
       setBlogs((prevBlogs: any) => {
@@ -102,10 +104,9 @@ export default function BlogPageClient({
       { threshold: 1.0 }
     );
 
-    const target = document.querySelector('#load-more-trigger');
+    const target = document.querySelector("#load-more-trigger");
     if (target) {
       observer.observe(target);
-      
     }
 
     return () => {
@@ -115,7 +116,9 @@ export default function BlogPageClient({
 
   return (
     <div className="lg:pt-30 md:pt-10 mx-auto w-full">
-      <h1 className="text-white mb-6 text-2xl font-bold mx-40">Blogs for {product}</h1>
+      <h1 className="text-white mb-6 text-2xl font-bold mx-40">
+        Blogs for {product}
+      </h1>
       <div>
         {blogs?.map((blog: any, index: number) => (
           <BlogCard

@@ -1,15 +1,15 @@
-import { notFound } from 'next/navigation';
-import { getBlogsForProduct } from '../../../utils/fetchBlogs'; // Updated import
-import InteractiveBackground from '../../../components/shared/Background/InteractiveBackground';
-import NavBarServer from '../../../components/shared/NavBarServer';
-import FooterServer from '../../../components/shared/FooterServer';
-import BlogPageClient from '../../../components/shared/BlogPageClient';
+import { notFound } from "next/navigation";
+import { getBlogsForProduct } from "../../../utils/fetchBlogs"; // Updated import
+import InteractiveBackground from "../../../components/shared/Background/InteractiveBackground";
+import NavBarServer from "../../../components/shared/NavBarServer";
+import FooterServer from "../../../components/shared/FooterServer";
+import BlogIndexClient from "../../../components/shared/BlogIndexClient";
 
-interface BlogPageProps {
+interface BlogIndex {
   params: { product: string };
 }
 
-export default async function BlogPage({ params }: BlogPageProps) {
+export default async function BlogIndex({ params }: BlogIndex) {
   const { product } = params;
 
   try {
@@ -25,7 +25,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         <NavBarServer product={product} />
 
         <div className="flex-grow">
-          <BlogPageClient
+          <BlogIndexClient
             query={blogs.query}
             data={blogs.data}
             product={product}
@@ -36,7 +36,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
       </div>
     );
   } catch (error) {
-    console.error('Error fetching TinaCMS blog data:', error);
+    console.error("Error fetching TinaCMS blog data:", error);
     return notFound();
   }
 }
