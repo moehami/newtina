@@ -14,7 +14,6 @@ const BlogCard = ({
   date,
   body,
   readLength,
-  sswPeopleLink,
   blogPostLink,
 }: {
   title: string;
@@ -22,41 +21,33 @@ const BlogCard = ({
   date: string;
   body: TinaMarkdownContent;
   readLength: string;
-  sswPeopleLink: string;
   blogPostLink: string;
 }) => {
   const blurb = extractBlurbAsTinaMarkdownContent(body, 3); // extract 3 sentences in blurb.
 
   return (
-    <div className="mx-40 p-6 rounded-2xl shadow-2xl bg-stone-700/30 mb-10 text-white border-opacity-15 border-2 border-slate-300">
-      <h2 className="text-2xl font-bold mb-2 tracking-wider">{title}</h2>
-      <div className="font-light text-sm">
-        <span>
-          by{" "}
-          <Link target="_blank" href={sswPeopleLink} className="underline">
-            {author}{" "}
-          </Link>
-        </span>
-        <div>
-          <span>{`${new Date(date).getDate()} ${new Date(date).toLocaleString(
-            "default",
-            { month: "long" }
-          )} ${new Date(date).getFullYear()}`}</span>
-          <span>{` | ${readLength}`}</span>
+    <Link href={`/blog/${blogPostLink}`}>
+      <div className="mx-8 md:mx-20 lg:mx-40 p-6 rounded-2xl shadow-2xl bg-stone-700/30 mb-6 text-white border-opacity-15 border-2 hover:border-opacity-85 border-slate-300">
+        <h2 className="text-2xl font-bold mb-2 tracking-wider">{title}</h2>
+        <div className="font-light text-sm">
+          <span>by {author} </span>
+          <div>
+            <span>{`${new Date(date).getDate()} ${new Date(date).toLocaleString(
+              "default",
+              { month: "long" }
+            )} ${new Date(date).getFullYear()}`}</span>
+            <span>{` | ${readLength}`}</span>
+          </div>
+          <div className="mt-4">
+            <TinaMarkdown content={blurb} />
+          </div>
+          <div className="mt-4 flex items-center font-light">
+            <span>READ MORE</span>
+            <HiOutlineArrowNarrowRight className="ml-2 transform scale-x-150 scale-y-125" />
+          </div>
         </div>
-        <div className="mt-4">
-          <TinaMarkdown content={blurb} />
-        </div>
-
-        <Link
-          href={`/blog/${blogPostLink}`}
-          className="mt-4 flex items-center font-light"
-        >
-          <span>READ MORE</span>
-          <HiOutlineArrowNarrowRight className="ml-2 transform scale-x-150 scale-y-125" />
-        </Link>
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -116,7 +107,7 @@ export default function BlogIndexClient({
 
   return (
     <div className="lg:pt-30 md:pt-10 mx-auto w-full">
-      <h1 className="text-white mb-6 text-2xl font-bold mx-40">
+      <h1 className="text-white mb-6 text-2xl font-bold lg:mx-40">
         Blogs for {product}
       </h1>
       <div>
@@ -128,7 +119,6 @@ export default function BlogIndexClient({
             date={blog.date}
             body={blog.body}
             readLength={blog.readLength}
-            sswPeopleLink={blog.sswPeopleLink}
             blogPostLink={blog._sys.filename}
           />
         ))}
