@@ -17,7 +17,7 @@ export const BookingButton = ({ title, jotFormId }: BookingButtonProps) => {
     <div>
       <button
         onClick={openModal}
-        className="md:px-5 md:py-4 px-2 py-1 bg-ssw-red md:font-semibold text-center items-center text-white rounded-lg hover:opacity-80 whitespace-nowrap"
+        className="px-5 py-2 bg-ssw-red font-semibold text-center items-center text-white rounded-lg hover:opacity-80 whitespace-nowrap"
       >
         {title}
       </button>
@@ -28,7 +28,7 @@ export const BookingButton = ({ title, jotFormId }: BookingButtonProps) => {
         title="jotform"
         src={`https://form.jotform.com/${jotFormId}`}
         width="100%"
-        className='p-4 lg:w-[40rem] lg:h-[50rem] w-[30rem] h-[40rem] overflow-hidden'
+        className='md:p-4 lg:w-[40rem] lg:h-[50rem] md:w-[30rem] h-[40rem] overflow-hidden'
         />
       </Modal>
     </div>

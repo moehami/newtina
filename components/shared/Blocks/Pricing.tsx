@@ -39,7 +39,7 @@ const Pricing = ({ data }: PricingProps) => {
   const { title, description, allPlans, plans } = data;
 
   return (
-    <div className="pricing-component container mx-auto p-4 lg:pb-40">
+    <div className="pricing-component container mx-auto p-4 mb-14 lg:mb-4 mt-20 lg:mt-32 md:mt-0 lg:pb-40">
       {title && (
         <h1
           className="text-5xl text-center  text-white mb-4"
@@ -51,14 +51,14 @@ const Pricing = ({ data }: PricingProps) => {
 
       {description && (
         <div
-          className="text-lg text-white text-center mb-8"
+          className="text-lg text-white text-center px-4 mb-8"
           data-tina-field={tinaField(data, "description")}
         >
           <TinaMarkdown content={description} />
         </div>
       )}
 
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-5 px-28 lg:px-12">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-5 px-12 lg:px-12">
         {allPlans && allPlans.length > 0 && (
           <div
             className="all-plans p-4 rounded-lg text-white col-span-1 lg:col-span-2 lg:mx-auto xl:col-span-1"

@@ -5,6 +5,8 @@ import { NavigationBarQuery } from "../../tina/__generated__/types";
 import Image from "next/image";
 import { BookingButton } from "./Blocks/BookingButton";
 import Link from "next/link";
+import { HiOutlineBars3 } from "react-icons/hi2";
+import { CgClose } from "react-icons/cg";
 
 interface NavBarClientProps {
   results: NavigationBarQuery | null;
@@ -12,10 +14,11 @@ interface NavBarClientProps {
 
 export default function NavBarClient({ results }: NavBarClientProps) {
   const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
+      if (window.scrollY > 50) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -38,23 +41,21 @@ export default function NavBarClient({ results }: NavBarClientProps) {
       case "NavigationBarLeftNavItemStringItem":
       case "NavigationBarRightNavItemStringItem":
         return (
-          <li key={index} className="flex items-center pt-2 lg:px-10 xl:px-0 md:px-6 px-4">
-            <Link
-              href={item.href}
-              className="hover:underline md:text-xl"
-            >
+          <li
+            key={index}
+            className="flex items-center lg:px-3 xl:px-0 py-1 px-2"
+          >
+            <Link href={item.href} className="hover:underline text-xl">
               {item.label}
             </Link>
           </li>
         );
-
       case "NavigationBarLeftNavItemGroupOfStringItems":
       case "NavigationBarRightNavItemGroupOfStringItems":
         return (
           <li key={index} className="flex items-center group relative">
             <span className="cursor-pointer">{item.label}</span>
             <ul className="absolute top-full left-0 bg-white text-black hidden group-hover:block mt-2 space-y-1 p-2 rounded shadow-lg">
-              {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
               {item.items?.map((subItem: any, subIndex: number) => (
                 <li key={subIndex}>
                   <Link href={subItem.href} className="hover:underline">
@@ -65,7 +66,6 @@ export default function NavBarClient({ results }: NavBarClientProps) {
             </ul>
           </li>
         );
-
       case "NavigationBarLeftNavItemModalButton":
       case "NavigationBarRightNavItemModalButton":
         return (
@@ -83,14 +83,12 @@ export default function NavBarClient({ results }: NavBarClientProps) {
             </button>
           </li>
         );
-
       case "NavigationBarRightNavItemBookingButton":
         return (
-          <li key={index} className="flex items-center">
+          <li key={index} className="flex items-center py-2">
             <BookingButton title={item.Title} jotFormId={item.JotFormId} />
           </li>
         );
-
       default:
         return null;
     }
@@ -101,28 +99,49 @@ export default function NavBarClient({ results }: NavBarClientProps) {
       <nav
         className={`${
           scrolled
-            ? 'bg-stone-700 bg-opacity-90 backdrop-blur-md'
-            : 'bg-transparent'
-        } text-gray-300 fixed top-0 left-0 w-full z-50 transition-colors duration-300 flex justify-between items-center h-[120px]`}
+            ? "bg-stone-700 bg-opacity-90 backdrop-blur-md"
+            : "bg-transparent mt-6"
+        } text-gray-300 fixed top-0 left-0 w-full z-50 transition-colors duration-300 flex justify-between items-center h-[70px]`}
       >
-        <ul className="md:pl-20 pl-10 flex items-center justify-start h-full space-x-15 xl:space-x-20">
+        <div className="flex items-center md:justify-between lg:justify-normal  w-full px-4 md:px-20">
           {logo && (
-            <li className="flex items-center">
-              <Link href="/">
-                <Image src={logo} alt="Logo" width={200} height={200} />
-              </Link>
-            </li>
+            <Link href="/" className="pb-1 lg:px-3 xl:px-0 md:px-3 px-2">
+              <Image src={logo} alt="Logo" width={200} height={200} />
+            </Link>
           )}
-          {leftNavItems?.map((item, index) => renderNavItem(item, index))}
-        </ul>
-  
-        <ul className="md:pr-20 pr-5 flex items-center justify-end h-full space-x-15 xl:space-x-20">
-          {rightNavItems?.map((item, index) => renderNavItem(item, index))}
-        </ul>
+
+          <button
+            className="md:block lg:hidden ml-auto block text-3xl"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <CgClose /> : <HiOutlineBars3 />}
+          </button>
+
+          <ul className="hidden lg:flex items-center lg:px-10 space-x-15 xl:space-x-10">
+            {leftNavItems?.map((item, index) => renderNavItem(item, index))}
+          </ul>
+
+          <ul className="hidden lg:flex items-center lg:ml-auto space-x-15 xl:space-x-20">
+            {rightNavItems?.map((item, index) => renderNavItem(item, index))}
+          </ul>
+        </div>
+        <div
+          className={`${
+            isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+          } ${
+            scrolled ? "bg-stone-700 bg-opacity-100" : "bg-opacity-90 bg-black"
+          } transition-all duration-500 ease-in-out overflow-hidden lg:hidden w-full text-white absolute top-full left-0 flex flex-col items-start space-y-2`}
+        >
+          <div className="p-5">
+            <ul className="flex flex-col">
+              {leftNavItems?.map((item, index) => renderNavItem(item, index))}
+            </ul>
+            <ul className="flex flex-col space-y-3">
+              {rightNavItems?.map((item, index) => renderNavItem(item, index))}
+            </ul>
+          </div>
+        </div>
       </nav>
-  
-      <div className="h-[120px]"></div>
     </div>
   );
-  
 }
