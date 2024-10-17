@@ -60,20 +60,20 @@
       "text": "",
       "questions": [
         {
-          "question": "Lorem ipsum dolor sit amet?",
-          "answer": "hehe answer"
+          "question": "Is YakShaver easy to use for non-technical teams? ",
+          "answer": "Absolutely. YakShaver’s intuitive design makes it easy for anyone, regardless of technical expertise, to report issues and delegate tasks efficiently."
         },
         {
-          "question": "Lorem ipsum dolor sit amet?",
-          "answer": "hehe answer"
+          "question": "Can YakShaver work with my existing systems? ",
+          "answer": "YakShaver can pull your people and project data from multiple systems including, Dynamics 365, Active Directory, Salesforce or even just an excel import! For work item creation, it integrates with Exchange, GitHub, Azure DevOps, Jira, Zendesk and more! "
         },
         {
-          "question": "Lorem ipsum dolor sit amet?",
-          "answer": "hehe answer"
+          "question": "Does YakShaver support screen recording? ",
+          "answer": "Yes, YakShaver includes built-in screen recording from Microsoft Teams, making it easy to capture and use visual information when reporting an issue. It can also integrate with standalone screen recorders such as Snagit. "
         },
         {
-          "question": "Lorem ipsum dolor sit amet?",
-          "answer": "hehe answer"
+          "question": "What kind of issues can I report with YakShaver? ",
+          "answer": "You can report any type of issue! YakShaver is designed to handle a variety of tasks, bugs or features, and automatically package them into work items with relevant information and send it off to the relevant people."
         }
       ],
       "_template": "faq"
