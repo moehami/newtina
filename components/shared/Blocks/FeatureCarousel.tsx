@@ -116,7 +116,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
               <button
                 key={index}
                 onClick={() => handleTabClick(index)}
-                className={`lg:px-8 md:px-2 px-1 py-3 shadow-xl  md:text-lg text-md rounded-xl ${
+                className={`lg:px-8 md:px-2 px-1 py-3 shadow-xl text-base rounded-xl ${
                   activeIndex === index
                     ? "text-black bg-white"
                     : "text-white bg-black hover:bg-zinc-700"
@@ -132,7 +132,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
         </div>
       ) : (
         <div className="mb-10 hidden lg:block">
-          <h2 className="text-2xl text-white">All Features</h2>
+          <h2 className="text-3xl font-semibold text-white">All Features</h2>
         </div>
       )}
 
@@ -141,7 +141,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
           <div>
             {data.carouselItems[activeIndex]?.title && (
               <h2
-                className="md:text-xl lg:text-3xl "
+                className="md:text-xl font-semibold lg:text-2xl "
                 data-tina-field={tinaField(
                   data.carouselItems[activeIndex],
                   "title"
@@ -168,7 +168,7 @@ const FeatureHorizontalCarousel = ({ data }: FeatureCarouselProps) => {
             <div key={index} className="mt-5 pb-8">
               {item.title && (
                 <h2
-                  className="text-2xl lg:text-3xl "
+                  className="text-2xl font-semibold lg:text-3xl "
                   data-tina-field={tinaField(item, "title")}
                 >
                   {item.title}

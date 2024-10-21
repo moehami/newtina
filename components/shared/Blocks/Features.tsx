@@ -34,7 +34,7 @@ export const featureComponents: Components<Record<string, unknown>> = {
   //@ts-expect-error investigate type err
   p: (props: React.HTMLProps<HTMLParagraphElement>) => (
     <p
-      className="mb-4 text-white  leading-relaxed lg:text-lg md:text-md"
+      className="mb-4 text-white  leading-relaxed text-base"
       //@ts-expect-error investigate type err
       data-tina-field={tinaField(props, "text")}
       {...props}
@@ -43,7 +43,7 @@ export const featureComponents: Components<Record<string, unknown>> = {
   //@ts-expect-error investigate type err
   span: (props: React.HTMLProps<HTMLSpanElement>) => (
     <span
-      className="mb-4 text-white  leading-relaxed lg:text-lg md:text-md"
+      className="mb-4 text-white  leading-relaxed text-base"
       //@ts-expect-error investigate type err
       data-tina-field={tinaField(props, "text")}
       {...props}
@@ -95,14 +95,15 @@ const FeatureBlock = ({ feature }: { feature: FeatureItem }) => {
       }  pb-10 lg:pb-0 px-8 3xl:px-20`}
     >
       <div className="lg:w-2/7 w-full flex flex-col gap-2">
-        <h2
-          className="xl:text-5xl lg:text-4xl md:text-4xl text-4xl text-white  tracking-wide"
+        <h1
+          className="text-3xl text-white font-semibold tracking-wide"
           data-tina-field={tinaField(feature, "headline")}
         >
           {feature.headline}
-        </h2>
-        <div></div>
-        <TinaMarkdown content={feature.text} components={featureComponents} />
+        </h1>
+        <div className="text-base">
+          <TinaMarkdown content={feature.text} components={featureComponents} />
+        </div>
         <div className="flex flex-col lg:flex-row lg:justify-start lg:items-center gap-4 xl:gap-0">
           {feature.buttons?.map((button, index) => (
             <Actions key={index} actions={[button]} />

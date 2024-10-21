@@ -37,13 +37,13 @@ const Banner = ({ data }: { data: BannerProps["data"] }) => {
       >
         {/* Left Column: Text and Buttons */}
         <div className="lg:w-2/5 w-full flex flex-col gap-2 pl-0 lg:pl-20">
-          <h1
-            className="text-3xl mb-4"
+          <h2
+            className="text-2xl font-semibold mb-4"
             data-tina-field={tinaField(data, "headline")}
           >
             {data.headline}
-          </h1>
-          <p className="text-lg mb-6" data-tina-field={tinaField(data, "text")}>
+          </h2>
+          <p className="text-base mb-6" data-tina-field={tinaField(data, "text")}>
             {data.text}
           </p>
 

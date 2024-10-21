@@ -42,7 +42,7 @@ const Pricing = ({ data }: PricingProps) => {
     <div className="pricing-component container mx-auto p-4 mb-14 lg:mb-4 mt-20 lg:mt-32 md:mt-0 lg:pb-40">
       {title && (
         <h1
-          className="text-5xl text-center  text-white mb-4"
+          className="text-3xl text-center font-semibold text-white mb-4"
           data-tina-field={tinaField(data, "title")}
         >
           {title}
@@ -51,7 +51,7 @@ const Pricing = ({ data }: PricingProps) => {
 
       {description && (
         <div
-          className="text-lg text-white text-center px-4 mb-8"
+          className="text-white text-base text-center px-4 mb-8"
           data-tina-field={tinaField(data, "description")}
         >
           <TinaMarkdown content={description} />
@@ -64,12 +64,12 @@ const Pricing = ({ data }: PricingProps) => {
             className="all-plans p-4 rounded-lg text-white col-span-1 lg:col-span-2 lg:mx-auto xl:col-span-1"
             data-tina-field={tinaField(data, "allPlans")}
           >
-            <h3 className="text-xl font-semibold mb-4">All Plans Include:</h3>
+            <h3 className="text-md font-semibold mb-4">All Plans Include:</h3>
             <ul>
               {allPlans.map(
                 (plan, index) =>
                   plan?.title && (
-                    <li key={index} className="flex items-center text-md pb-2">
+                    <li key={index} className="flex items-center text-base pb-2">
                       <TiTick className="text-white mr-2" />
                       {plan.title}
                     </li>
@@ -93,9 +93,9 @@ const Pricing = ({ data }: PricingProps) => {
             >
               {plan.planTier && (
                 <div className="mb-2 flex items-center justify-between">
-                  <h3 className="text-3xl">{plan.planTier}</h3>
+                  <h3 className="text-xl">{plan.planTier}</h3>
                   {plan.isRecommended && (
-                    <p className="text-sm bg-gray-300 bg-opacity-40 rounded-full px-2 py-1">
+                    <p className="text-base bg-gray-300 bg-opacity-40 rounded-full px-2 py-1">
                       Most Popular
                     </p>
                   )}
@@ -103,11 +103,11 @@ const Pricing = ({ data }: PricingProps) => {
               )}
 
               {plan.planDescription && (
-                <p className="text-md mb-8">{plan.planDescription}</p>
+                <p className="text-base mb-8">{plan.planDescription}</p>
               )}
               {plan.price && <p className="text-3xl mb-2">{plan.price}</p>}
               {plan.subPriceText && (
-                <p className="text-sm text-white mb-4">{plan.subPriceText}</p>
+                <p className="text-base text-white mb-4">{plan.subPriceText}</p>
               )}
 
               {plan.actions && (

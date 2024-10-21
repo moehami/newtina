@@ -22,13 +22,13 @@ const FAQ = ({ data }: { data: FAQData }) => {
 
   return (
     <div className="text-white p-8 lg:px-40 3xl:px-80 mx-auto">
-      <h2
-        className="text-3xl  mb-6 flex justify-center"
+      <h1
+        className="text-2xl font-semibold mb-6 flex justify-center"
         data-tina-field={tinaField(data, "headline")}
       >
         {data.headline}
-      </h2>
-      <p className="mb-8" data-tina-field={tinaField(data, "text")}>
+      </h1>
+      <p className="mb-8 text-base" data-tina-field={tinaField(data, "text")}>
         {data.text}
       </p>
       <hr className="border-white" />
@@ -40,7 +40,7 @@ const FAQ = ({ data }: { data: FAQData }) => {
               onClick={() => toggleQuestion(index)}
             >
               <h3
-                className="text-xl font-medium"
+                className="text-base font-medium"
                 data-tina-field={tinaField(item, "question")}
               >
                 {item.question}

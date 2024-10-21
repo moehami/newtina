@@ -28,8 +28,8 @@ const BlogCard = ({
   return (
     <Link href={`/blog/${blogPostLink}`}>
       <div className="mx-8 md:mx-20 lg:mx-40 p-6 rounded-2xl shadow-2xl bg-stone-700/30 mb-6 text-white border-opacity-15 border-2 hover:border-opacity-85 border-slate-300">
-        <h2 className="text-2xl font-bold mb-2 tracking-wider">{title}</h2>
-        <div className="font-light text-sm">
+        <h2 className="text-2xl mb-2 tracking-wider">{title}</h2>
+        <div className="font-light text-base">
           <span>by {author} </span>
           <div>
             <span>{`${new Date(date).getDate()} ${new Date(date).toLocaleString(
@@ -106,8 +106,8 @@ export default function BlogIndexClient({
   }, [loadMoreBlogs]);
 
   return (
-    <div className="lg:pt-30 md:pt-10 mx-auto w-full">
-      <h1 className="text-white mb-6 text-2xl font-bold lg:mx-40">
+    <div className="lg:pt-32 md:pt-10 mx-auto w-full">
+      <h1 className="text-white font-semibold mb-6 text-3xl lg:mx-40">
         Blogs for {product}
       </h1>
       <div>

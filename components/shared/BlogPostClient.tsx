@@ -17,7 +17,7 @@ interface BlogPostClientProps {
 
 const BreadCrumbs = ({ title }: { title: string }) => {
     return (
-      <div className="font-light mb-4 inline-flex items-center">
+      <div className="font-light mb-4 text-base inline-flex items-center">
         <Link href="/blog">BLOG</Link> 
         <span className="mx-2">
           <MdOutlineKeyboardArrowRight size={20} />
@@ -37,11 +37,11 @@ export default function BlogPostClient({
 }: BlogPostClientProps) {
   return (
     <>
-      <div className="p-4 max-w-3xl mx-auto text-white">
+      <div className="p-4 lg:pt-32 font-semibold max-w-3xl mx-auto text-white">
         <BreadCrumbs title={title} />
-        <h2 className="text-3xl font-bold mb-2 tracking-wide">{title}</h2>
+        <h2 className="text-3xl mb-2 tracking-wide">{title}</h2>
 
-        <div className="text-sm mb-4">
+        <div className="text-base mb-4">
           <span>
             by{" "}
             {sswPeopleLink ? (
@@ -62,7 +62,7 @@ export default function BlogPostClient({
           </div>
         </div>
 
-        <div className="prose lg:prose-xl">
+        <div className="prose text-base lg:prose-xl">
           <TinaMarkdown content={body} />
         </div>
       </div>
