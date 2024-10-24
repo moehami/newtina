@@ -10,11 +10,6 @@
       "label": "About",
       "href": "/about",
       "_template": "stringItem"
-    },
-    {
-      "label": "Blog",
-      "href": "/blog",
-      "_template": "stringItem"
     }
   ],
   "rightNavItem": [
