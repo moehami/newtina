@@ -28,7 +28,7 @@ export const BookingButton = ({ title, jotFormId }: BookingButtonProps) => {
         title="jotform"
         src={`https://form.jotform.com/${jotFormId}`}
         width="100%"
-        className='md:p-4 lg:w-[40rem] lg:h-[50rem] md:w-[30rem] h-[40rem] overflow-hidden'
+        className='md:p-5 p-4 lg:w-[40rem] lg:h-[50rem] md:w-[30rem] h-[40rem] overflow-hidden'
         />
       </Modal>
     </div>
