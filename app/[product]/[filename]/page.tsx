@@ -12,11 +12,7 @@ interface FilePageProps {
 export default async function FilePage({ params }: FilePageProps) {
   const { product, filename } = params;
 
-  
-
   const fileData = await getPage(product, filename);
-
-
 
   return (
     <div>
