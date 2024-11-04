@@ -1,38 +1,79 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+This project uses [TinaCMS](https://tina.io) and a custom [middleware](https://github.com/SSWConsulting/SSW.Products/blob/main/middleware.ts) that allows for a multi-domain architecture. 
+
+The purpose of this repository is to host the product pages for [SSW's](https://www.ssw.com.au) custom [software](https://www.ssw.com.au/products).
+
+## Running this project locally?
 
 1. Copy `.env.example` to `.env`
 
-2. Run the development server:
+2. Install Dependencies 
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+yarn install
+
 ```
 
-3. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Run the development server:
 
-4. You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+yarn dev
 
-## Learn More
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### To add an extra tenant/ domain you must
 
-## Deploy on Vercel
+1. Head to the [Vercel instance](https://vercel.com/tinacms/ssw-products/settings/environment-variables) of this project
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. Navigate to Settings | Environment Variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. Edit the `NEXT_PUBLIC_PRODUCT_LIST` adding an extra object into the JSON object 
+
+Ex:
+    `{"product": "YakShaver", "domain": "www.yakshaver.ai"}`
+
+4. Head to the [Tina Cloud](https://app.tina.io/projects/fe0389d9-41bc-42e5-872d-ef8b293b8d0b/overview) instance of this project 
+
+5. Under Overview | Site URLs, add the domain URL that you added to the Vercel environment variable
+
+### How does the MiddleWare work? 
+
+Context: Our file structure within our app router looks like 
+
+```bash
+|- app
+|   |- page.tsx
+|   |- [product]
+|          |- [filename]
+|                  |- page.tsx
+```
+
+When the user serves the site a respective domain (i.e think www.YakShaver.ai), it will try to find a respective product mapping from the `NEXT_PUBLIC_PRODUCT_LIST`. If it successfully finds a product, it will fill the [product] dynamic mapping with the product value found from the `NEXT_PUBLIC_PRODUCT_LIST`. Then when it comes to serving data, our `page.tsx`
+will use `relativePath: ${product}/home.json` using the specific product it found related to the domain. 
+
+This also means we have to set up the file structure for where we store our content. This is how we've organised our `content` structure;
+
+```bash
+|- content
+      |- blogs
+      |- footer
+      ... other TinaCMS collections
+      |- pages
+           |- Product1
+                 |- home.json
+           |- Product2
+                 |- home.json
+```
+
+Note in this instance Product1 and Product2 are just the product names such like [YakShaver](www.YakShaver.ai) or TimePro
+
+## Wanting to use the Middleware for your own site? 
+
+We've documented how we use this middleware for our own sites and clients - [Do you know how to use single codebase for multiple domains with TinaCMS and Next.js?](https://www.ssw.com.au/rules/single-codebase-for-multiple-domains-with-tinacm-nextjs/)
